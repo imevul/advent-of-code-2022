@@ -34,4 +34,4 @@ function part2(array $input): int {
     return 0;
 }
 
-return [test([NULL, NULL]), run(empty($skipRun))];
+return [test([NULL, NULL]), run()];

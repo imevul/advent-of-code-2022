@@ -32,4 +32,4 @@ function part2(array $input): int {
 	return $result[0] + $result[1] + $result[2];
 }
 
-return [test([24000, 45000]), run(empty($skipRun))];
+return [test([24000, 45000]), run()];

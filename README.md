@@ -5,6 +5,9 @@ Here are a few working examples in PHP for the 2022 version of [Advent of Code](
 ## Running
 The solution for all days can be run from the command line, ex:
 
-	php index.php [all]
+	php run.php [day]
 
-This will run the solutions (both parts) for either the latest day, or all days if the `all` flag is specified. 
+`day` is optional, and can be either a day number, or `all`.
+- If it's a number, and the day specified exists, only that day will be run.
+- If `all` is specified, all days will be run.
+- If omitted, only the latest day will be run. 
