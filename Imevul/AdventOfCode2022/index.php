@@ -12,7 +12,7 @@ use SebastianBergmann\Timer\Timer;
 require_once __DIR__ . '/../../bootstrap.php';
 
 define('IS_CLI', php_sapi_name() == 'cli');
-define('ONLY_LATEST', TRUE);
+define('ONLY_LATEST', ($argv[1] ?? NULL) !== 'all');
 
 $days = [];
 $directories = glob('Day*');
