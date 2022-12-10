@@ -91,4 +91,4 @@ function part2(array $input): int {
 	return $directories[0]->size;
 }
 
-return [test([95437, 24933642]), run(empty($skipRun))];
+return [test([95437, 24933642]), run()];

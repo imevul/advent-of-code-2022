@@ -11,34 +11,48 @@ use SebastianBergmann\Timer\Timer;
 
 require_once __DIR__ . '/../../bootstrap.php';
 
+$day = $argv[1] ?? NULL;
+
 define('IS_CLI', php_sapi_name() == 'cli');
-define('ONLY_LATEST', ($argv[1] ?? NULL) !== 'all');
+define('ONLY_LATEST', $day === NULL);
+
+function success(mixed $v, bool $color = TRUE): mixed {
+	return $color ? (new Console_Color2)->convert("%G$v%n") : $v;
+}
+
+function failure(mixed $v, bool $color = TRUE): mixed {
+	return $color ? (new Console_Color2)->convert("%R$v%n") : $v;
+}
+
+function runDay(int $day): array {
+	$filename = "Day$day/day$day.php";
+
+	if (file_exists($filename)) {
+		$timer = new Timer;
+		$timer->start();
+		$result = include_once($filename);
+		$duration = $timer->stop();
+		return [$day, ...$result, $duration->asString()];
+	}
+
+	return [$day, [], ''];
+}
 
 $days = [];
 $directories = glob('Day*');
 natsort($directories);
 $maxDay = (int)str_replace('Day', '', $directories[array_key_last($directories)]);
 
-for ($i = 1; $i <= $maxDay; $i++) {
-    $filename = "Day$i/day$i.php";
-    $skipRun = (ONLY_LATEST && $i === $maxDay) || !ONLY_LATEST;
-
-    if (file_exists($filename)) {
-        $timer = new Timer;
-        $timer->start();
-        $result = include_once($filename);
-        $duration = $timer->stop();
-        $days[$i] = [$i, ...$result, $duration->asString()];
-
-    }
+if (ONLY_LATEST) {
+	$day = $maxDay;
 }
 
-function success(mixed $v, bool $color = TRUE) {
-    return $color ? (new Console_Color2)->convert("%G$v%n") : $v;
-}
-
-function failure(mixed $v, bool $color = TRUE) {
-    return $color ? (new Console_Color2)->convert("%R$v%n") : $v;
+if ($day >= 1 && $day <= $maxDay) {
+	$days[$day] = runDay($day);
+} else {
+	for ($i = 1; $i <= $maxDay; $i++) {
+		$days[$i] = runDay($i);
+	}
 }
 
 $data = [];

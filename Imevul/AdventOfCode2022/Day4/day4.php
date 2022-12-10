@@ -52,4 +52,4 @@ function part2(array $input): int {
 	);
 }
 
-return [test([2, 4]), run(empty($skipRun))];
+return [test([2, 4]), run()];

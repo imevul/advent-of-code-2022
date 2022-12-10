@@ -67,4 +67,4 @@ function part2(array $input): int {
 	);
 }
 
-return [test([157, 70]), run(empty($skipRun))];
+return [test([157, 70]), run()];

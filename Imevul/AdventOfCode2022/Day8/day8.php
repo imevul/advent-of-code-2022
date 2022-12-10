@@ -85,4 +85,4 @@ function part2(array $input): int {
 	return $maxScore;
 }
 
-return [test([21, 8]), run(empty($skipRun))];
+return [test([21, 8]), run()];

@@ -47,4 +47,4 @@ function part2(array $input): int {
 
 }
 
-return [test([13, 1]), run(empty($skipRun))];
+return [test([13, 1]), run()];

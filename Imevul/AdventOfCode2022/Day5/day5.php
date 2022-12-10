@@ -79,4 +79,4 @@ function part2(array $input): string {
 	);
 }
 
-return [test(['CMZ', 'MCD']), run(empty($skipRun))];
+return [test(['CMZ', 'MCD']), run()];

@@ -41,4 +41,4 @@ function part2(array $input): int {
 	return $position;
 }
 
-return [test([7, 19]), run(empty($skipRun))];
+return [test([7, 19]), run()];
