@@ -194,8 +194,8 @@ function runParts(bool $useTestData = FALSE): array {
     $getConvertedInput = $namespace . '\\getConvertedInput';
     $part1 = $namespace . '\\part1';
     $part2 = $namespace . '\\part2';
-    $input = $getConvertedInput(getInput($dir, $useTestData));
-    return [[$part1($input), $part2($input)], $isMain];
+    $input = getInput($dir, $useTestData);
+    return [[$part1($getConvertedInput($input)), $part2($getConvertedInput($input))], $isMain];
 }
 
 /**
